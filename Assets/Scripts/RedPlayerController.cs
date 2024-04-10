@@ -37,6 +37,10 @@ public class RedPlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
         }
+        else if (Input.GetKeyDown(KeyCode.S) && !isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -jumpForce);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -45,5 +49,10 @@ public class RedPlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
     }
 }
