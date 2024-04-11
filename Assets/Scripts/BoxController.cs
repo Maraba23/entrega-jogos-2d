@@ -46,6 +46,7 @@ public class BoxController : MonoBehaviour
         {
             StopBox();
             moveDirection = Vector2.zero; // Stops the box
+            rb.velocity = Vector2.zero;
         }
     }
 
