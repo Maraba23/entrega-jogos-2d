@@ -8,6 +8,7 @@ public class RedPlayerController : MonoBehaviour
     public float jumpForce = 7f;
     private Rigidbody2D rb;
     private bool isGrounded = true;
+    public string playerColor = "Red";
 
     void Start()
     {
