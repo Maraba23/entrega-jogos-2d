@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour
+public class Teleporter2 : MonoBehaviour
 {
-    public string objectToTeleportTag = "Player2";
-    public string targetLocationTag = "Teleporter1";
+    public string objectToTeleportTag = "Player1";
+    public string targetLocationTag = "Teleporter2";
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player1"))
+        if (collision.gameObject.CompareTag("Player2"))
         {
             GameObject objectToTeleport = GameObject.FindGameObjectWithTag(objectToTeleportTag);
             
