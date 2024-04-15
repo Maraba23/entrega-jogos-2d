@@ -8,6 +8,7 @@ TagManager:
   - Box
   - Player1
   - Player2
+  - Teleporter1
   layers:
   - Default
   - TransparentFX
