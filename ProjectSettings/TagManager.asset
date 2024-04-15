@@ -10,6 +10,9 @@ TagManager:
   - Player2
   - Teleporter1
   - Teleporter2
+  - Porta1
+  - Porta2
+  - Porta3
   layers:
   - Default
   - TransparentFX
