@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class NextPhase : MonoBehaviour
 {
+
+    public string targetTag;
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player2"))
+        if (collision.gameObject.CompareTag(targetTag))
         {
             NextLevel();
         }
@@ -13,6 +15,8 @@ public class NextPhase : MonoBehaviour
 
     void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        string name = SceneManager.GetActiveScene().name;
+        string next_name = (int.Parse(name.Split(' ')[0]) + 1).ToString() + " Room";
+        SceneManager.LoadScene(next_name);
     }
 }

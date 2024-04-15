@@ -6,7 +6,7 @@ public class Swapper : MonoBehaviour
 {
     public string tagOfFirstObject = "Player1";
     public string tagOfSecondObject = "Player2";
-    public float cooldownTime = 4f;
+    public float cooldownTime = 2f;
     private bool canSwap = true;
 
     private void OnCollisionEnter2D(Collision2D collision)
