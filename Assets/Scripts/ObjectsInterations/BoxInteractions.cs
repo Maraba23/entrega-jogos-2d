@@ -21,7 +21,7 @@ public class BoxInteractions : MonoBehaviour
             if (playerRed != null)
             {
                 playerRed.animator.SetTrigger("pushTrigger");
-                rb.AddForce(new Vector2(1, 0) * 100);
+                //rb.AddForce(new Vector2(1, 0) * 100);
             }
             else if (playerBlue != null)
             {
@@ -37,7 +37,7 @@ public class BoxInteractions : MonoBehaviour
         {
             BluePlayerController playerBlue = collision.gameObject.GetComponent<BluePlayerController>();
             
-            playerBlue.animator.SetBool("isPushing", true);
+            playerBlue.animator.SetBool("isPushing", false);
         }
     }
 }
