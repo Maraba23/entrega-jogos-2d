@@ -21,12 +21,23 @@ public class BoxInteractions : MonoBehaviour
             if (playerRed != null)
             {
                 playerRed.animator.SetTrigger("pushTrigger");
-                rb.AddForce(new Vector2(1, 0) * 100);
+                //rb.AddForce(new Vector2(1, 0) * 100);
             }
             else if (playerBlue != null)
             {
-                rb.AddForce(new Vector2(1, 0) * 10);
+                playerBlue.animator.SetBool("isPushing", true);
+                //rb.AddForce(new Vector2(1, 0) * 10);
             }
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player2"))
+        {
+            BluePlayerController playerBlue = collision.gameObject.GetComponent<BluePlayerController>();
+            
+            playerBlue.animator.SetBool("isPushing", false);
         }
     }
 }
