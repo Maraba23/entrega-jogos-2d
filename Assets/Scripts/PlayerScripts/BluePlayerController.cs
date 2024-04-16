@@ -18,27 +18,27 @@ public class BluePlayerController : MonoBehaviour
     void Update()
     {
         float moveX = 0f;
-        if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.L))
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
             moveX = 0f;
         }
-        else if (Input.GetKey(KeyCode.J))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             moveX = -1f;
         }
-        else if (Input.GetKey(KeyCode.L))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             moveX = 1f;
         }
 
         rb.velocity = new Vector2(moveX * maxSpeed, rb.velocity.y);
 
-        if (Input.GetKeyDown(KeyCode.I) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
         }
-        else if (Input.GetKeyDown(KeyCode.K) && !isGrounded)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, -jumpForce);
         }
