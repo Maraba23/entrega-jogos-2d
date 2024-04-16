@@ -9,10 +9,15 @@ public class RedPlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded = true;
     public string playerColor = "Red";
+    public Animator animator;
+    private bool facingRight = true;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -21,14 +26,32 @@ public class RedPlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
         {
             moveX = 0f;
+            animator.SetBool("isWalking", false);
         }
         else if (Input.GetKey(KeyCode.A))
         {
             moveX = -1f;
+            animator.SetBool("isWalking", true);
+            if (facingRight)
+            {
+                FlipSprite();
+            }
+            facingRight = false;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             moveX = 1f;
+            animator.SetBool("isWalking", true);
+            if (!facingRight)
+            {
+                FlipSprite();
+            }
+            facingRight = true;
+        }
+
+        else if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            animator.SetBool("isWalking", false);
         }
 
         rb.velocity = new Vector2(moveX * maxSpeed, rb.velocity.y);
@@ -37,6 +60,7 @@ public class RedPlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+            animator.SetBool("isGrounded", false);
         }
         else if (Input.GetKeyDown(KeyCode.S) && !isGrounded)
         {
@@ -49,7 +73,13 @@ public class RedPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Box")
         {
             isGrounded = true;
+            animator.SetBool("isGrounded", true);
         }
+    }
+
+    public void FlipSprite() 
+    {
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     public bool IsGrounded()
