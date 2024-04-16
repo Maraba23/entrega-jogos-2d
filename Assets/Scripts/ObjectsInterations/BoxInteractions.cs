@@ -25,8 +25,19 @@ public class BoxInteractions : MonoBehaviour
             }
             else if (playerBlue != null)
             {
-                rb.AddForce(new Vector2(1, 0) * 10);
+                playerBlue.animator.SetBool("isPushing", true);
+                //rb.AddForce(new Vector2(1, 0) * 10);
             }
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player2"))
+        {
+            BluePlayerController playerBlue = collision.gameObject.GetComponent<BluePlayerController>();
+            
+            playerBlue.animator.SetBool("isPushing", true);
         }
     }
 }

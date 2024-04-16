@@ -9,10 +9,16 @@ public class BluePlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded = true;
     public string playerColor = "Blue";
+    private bool isPushing = false;
+    public Animator animator;
+    private bool facingRight = true;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -21,15 +27,34 @@ public class BluePlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
             moveX = 0f;
+            animator.SetBool("isWalking", false);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             moveX = -1f;
+            animator.SetBool("isWalking", true);
+            if (facingRight)
+            {
+                FlipSprite();
+            }
+            facingRight = false;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             moveX = 1f;
+            animator.SetBool("isWalking", true);
+            if (!facingRight)
+            {
+                FlipSprite();
+            }
+            facingRight = true;
         }
+
+        else if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetBool("isWalking", false);
+        }
+
 
         rb.velocity = new Vector2(moveX * maxSpeed, rb.velocity.y);
 
@@ -37,6 +62,7 @@ public class BluePlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+            animator.SetBool("isGrounded", false);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded)
         {
@@ -49,6 +75,27 @@ public class BluePlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Box")
         {
             isGrounded = true;
+            animator.SetBool("isGrounded", true);
         }
+
+        if (collision.gameObject.tag == "Box")
+        {
+            isGrounded = true;
+            isPushing = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Box")
+        {
+            isGrounded = false;
+            isPushing = false;
+        }
+    }
+
+    public void FlipSprite() 
+    {
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 }
