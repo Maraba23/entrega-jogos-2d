@@ -20,7 +20,8 @@ public class BoxInteractions : MonoBehaviour
 
             if (playerRed != null)
             {
-                rb.velocity = new Vector2(playerBlue.transform.localScale.x * playerBlue.maxSpeed, rb.velocity.y);
+                playerRed.animator.SetTrigger("pushTrigger");
+                rb.velocity = new Vector2(playerRed.transform.localScale.x * playerRed.maxSpeed, rb.velocity.y);
             }
             else if (playerBlue != null)
             {
