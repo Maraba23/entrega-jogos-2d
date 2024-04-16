@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/3 Room.unity
     guid: 309f6ae9b90962444bdf4941147e6606
   - enabled: 1
-    path: Assets/Scenes/4 Room.unity
+    path: Assets/Scenes/5 Room.unity
     guid: 5242ddbbf3c5bd5409c45be9882c0bc2
   - enabled: 1
-    path: Assets/Scenes/5 Room.unity
+    path: Assets/Scenes/6 Room.unity
     guid: c9a867f73bff99a45aeffbedb61f0fd7
   m_configObjects: {}
