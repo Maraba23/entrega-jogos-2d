@@ -9,7 +9,6 @@ public class BluePlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded = true;
     public string playerColor = "Blue";
-    private bool isPushing = false;
     public Animator animator;
     private bool facingRight = true;
     private SpriteRenderer spriteRenderer;
@@ -81,7 +80,6 @@ public class BluePlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Box")
         {
             isGrounded = true;
-            isPushing = true;
         }
     }
 
@@ -90,7 +88,6 @@ public class BluePlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Box")
         {
             isGrounded = false;
-            isPushing = false;
         }
     }
 
