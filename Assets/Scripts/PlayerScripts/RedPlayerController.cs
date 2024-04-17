@@ -77,15 +77,6 @@ public class RedPlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if ((collision.gameObject.tag == "Box" && !isGrounded) || collision.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-            animator.SetBool("isGrounded", false);
-        }
-    }
-
     public void FlipSprite() 
     {
         spriteRenderer.flipX = !spriteRenderer.flipX;
