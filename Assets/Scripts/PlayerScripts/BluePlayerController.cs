@@ -12,12 +12,15 @@ public class BluePlayerController : MonoBehaviour
     public Animator animator;
     private bool facingRight = true;
     private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
+    public AudioClip jumpSound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -62,6 +65,7 @@ public class BluePlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
             animator.SetBool("isGrounded", false);
+            audioSource.PlayOneShot(jumpSound);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded)
         {
