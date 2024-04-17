@@ -17,6 +17,7 @@ public class NextPhase : MonoBehaviour
     {
         string name = SceneManager.GetActiveScene().name;
         string next_name = (int.Parse(name.Split(' ')[0]) + 1).ToString() + " Room";
-        SceneManager.LoadScene(next_name);
+        FindObjectOfType<SceneTransition>().LoadNextScene(next_name);
     }
+
 }
