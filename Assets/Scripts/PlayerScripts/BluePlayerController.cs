@@ -83,14 +83,6 @@ public class BluePlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Box")
-        {
-            isGrounded = false;
-        }
-    }
-
     public void FlipSprite() 
     {
         spriteRenderer.flipX = !spriteRenderer.flipX;

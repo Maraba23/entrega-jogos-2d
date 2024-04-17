@@ -7,7 +7,7 @@ public class NextPhase : MonoBehaviour
     public string targetTag;
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(targetTag))
+        if (collision.gameObject.CompareTag(targetTag) || targetTag == "Any")
         {
             NextLevel();
         }
