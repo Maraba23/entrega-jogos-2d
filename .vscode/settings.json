@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "jogo2d.sln"
+    "dotnet.defaultSolution": "entrega-jogos-2d.sln"
 }
