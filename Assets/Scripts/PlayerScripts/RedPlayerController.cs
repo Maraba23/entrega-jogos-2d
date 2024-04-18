@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RedPlayerController : MonoBehaviour
 {
@@ -69,6 +70,17 @@ public class RedPlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.S) && !isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, -jumpForce);
+        }
+
+
+        // Menu or Reset Level
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 
